@@ -62,7 +62,7 @@
                 return ($type ? "most " : "more ").$word;
             }
             
-            if ($syllables > 2 && preg_match("/ing$/", $word)) {
+            if ($syllables >= 2 && preg_match("/ing$/", $word)) {
                 return ($type ? "most " : "more ").$word;
             }
             
