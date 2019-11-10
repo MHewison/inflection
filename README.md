@@ -4,6 +4,8 @@ A library to inflect adjectives, conjugate verbs and pluralize/singularize nouns
 
 ## Usage ##
 
+```composer install hewison/inflection```
+
 ### Nouns ###
 
 ```php
