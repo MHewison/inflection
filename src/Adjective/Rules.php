@@ -10,6 +10,7 @@ class Rules
         "cunning" => ["more cunning", "most cunning"],
         "far" => ["further", "furthest"],
         "good" => ["better", "best"],
+        "well" => ["better", "best"],
         "giant" => ["more giant", "most giant"],
         "late" => ["later", "latest"],
         "little" => ["less", "least"],
