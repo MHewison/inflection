@@ -10,7 +10,7 @@ A library to inflect adjectives, conjugate verbs and pluralize/singularize nouns
 
 ```php
 Hewison\Inflection\Noun\Noun::toSingular("tables"); // table
-Hewison\Inflection\Noun\Noun::toPlural("bear")' // bears
+Hewison\Inflection\Noun\Noun::toPlural("bear"); // bears
 Hewison\Inflection\Noun\Noun::isSingular("tables"); // false
 Hewison\Inflection\Noun\Noun::isPlural("bears"); // true
 Hewison\Inflection\Noun\Noun::isCountable("economics"); // false
