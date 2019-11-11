@@ -33229,7 +33229,10 @@ class Rules
 
     const CONJUGATION_RULES = [
         [
-            "expression" => "/([uao]m[pb]|[oa]wn|ey|elp|[ei]gn|ilm|o[uo]r|[oa]ugh|igh|ki|ff|oubt|ount|awl|o[alo]d|[iu]rl|upt|[oa]y|ight|oid|empt|act|aud|e[ea]d|ound|[aeiou][srcln]t|ept|dd|[eia]n[dk]|[ioa][xk]|[oa]rm|[ue]rn|[ao]ng|uin|eam|ai[mr]|[oea]w|[eaoui][rscl]k|[oa]r[nd]|ear|er|[^aieouyfm]it|[aeiouy]ir|[^aieouyfm]et|ll|en|vil|om|[^rno].mit|rup|bat|val|.[^skxwb][rvmchslwngb]el)$/",
+            "expression" => "/([uao]m[pb]|[oa]wn|ey|elp|[ei]gn|ilm|o[uo]r|[oa]ugh|igh|ki|ff|oubt|ount|awl|o[alo]d|[iu]"
+                ."rl|upt|[oa]y|ight|oid|empt|act|aud|e[ea]d|ound|[aeiou][srcln]t|ept|dd|[eia]n[dk]|[ioa][xk]|[oa]rm|"
+                ."[ue]rn|[ao]ng|uin|eam|ai[mr]|[oea]w|[eaoui][rscl]k|[oa]r[nd]|ear|er|[^aieouyfm]it|[aeiouy]ir|"
+                ."[^aieouyfm]et|ll|en|vil|om|[^rno].mit|rup|bat|val|.[^skxwb][rvmchslwngb]el)$/",
             "function" => "longVowelConsonant"
         ],
         [
@@ -33293,7 +33296,7 @@ class Rules
     /**
      * Short Vowel Consonant Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33319,7 +33322,7 @@ class Rules
     /**
      * Consonant Before Y Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33345,7 +33348,7 @@ class Rules
     /**
      * Consonant Before E Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33371,7 +33374,7 @@ class Rules
     /**
      * Sibilant Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33395,7 +33398,7 @@ class Rules
     /**
      * Double E Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33419,7 +33422,7 @@ class Rules
     /**
      * i Before E Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33443,7 +33446,7 @@ class Rules
     /**
      * u Before E
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33467,7 +33470,7 @@ class Rules
     /**
      * Regular Rule
      * @param string $verb
-     * @param string $to
+     * @param int $to
      *
      * @return string
      */
@@ -33495,7 +33498,8 @@ class Rules
      *
      * @return string
      */
-    public static function solve(string $verb, string $to) : string {
+    public static function solve(string $verb, string $to) : string
+    {
         foreach (self::CONJUGATION_RULES as $rule) {
             if (preg_match($rule['expression'], $verb)) {
                 return self::{$rule['function']}($verb, $to);
