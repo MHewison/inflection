@@ -9,7 +9,7 @@
          */
         public static function countSyllables(string $word) : int
         {
-            return preg_match_all("/[aiouy]+e*|e(?!d$|ly).|[td]ed|le$/", $word);
+            return preg_match_all("/[aiouy]+e*|e(?!d$|ly).|[tdr]ed|le$/", $word);
         }
     
         /**
@@ -53,7 +53,7 @@
         public static function resolveForm(string $word, int $type = 0) : string
         {
             if (isset(Rules::IRREGULAR[$word])) {
-                return ($type ? Rules::IRREGULAR[$word][0] : Rules::IRREGULAR[$word][1]);
+                return ($type ? Rules::IRREGULAR[$word][1] : Rules::IRREGULAR[$word][0]);
             }
             
             $syllables = self::countSyllables($word);

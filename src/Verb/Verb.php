@@ -40,6 +40,9 @@
         
         /** @var string  */
         private $entry;
+
+        /** @var string */
+        private $error;
     
         /**
          * Static creation method
@@ -74,9 +77,9 @@
             $this->entry = $verb;
             $this->verb = $verb;
             $this->index = $this->findNearestVerb();
-    
+
             if ($this->index === false) {
-                return ["message" => "No verb found"];
+                return $this->error = "No verb found";
             }
     
             $this->setPrefix();
@@ -104,9 +107,9 @@
         /**
          * Get verb by its tense
          * @param string $tense
-         * @return string
+         * @return string|null
          */
-        private function getByTense(string $tense)
+        private function getByTense(?string $tense)
         {
             $verb = "";
             
@@ -137,7 +140,7 @@
          */
         public function toGerund() : string
         {
-            return $this->rebuild($this->gerund[$this->index]);
+            return $this->index !== false ? $this->rebuild($this->gerund[$this->index]) : $this->entry;
         }
     
         /**
@@ -146,7 +149,7 @@
          */
         public function toPresent() : string
         {
-            return $this->rebuild($this->present[$this->index]);
+            return $this->index !== false ? $this->rebuild($this->present[$this->index]) : $this->entry;
         }
     
         /**
@@ -155,7 +158,7 @@
          */
         public function toPast() : string
         {
-            return $this->rebuild($this->past[$this->index]);
+            return $this->index !== false ? $this->rebuild($this->past[$this->index]) : $this->entry;
         }
     
         /**
@@ -164,7 +167,7 @@
          */
         public function toPastParticiple() : string
         {
-            return $this->rebuild($this->past_participle[$this->index]);
+            return $this->index !== false ? $this->rebuild($this->past_participle[$this->index]) : $this->entry;
         }
     
         /**
@@ -173,7 +176,7 @@
          */
         public function toPresentThird() : string
         {
-            return $this->rebuild($this->present_third[$this->index]);
+            return $this->index !== false ? $this->rebuild($this->present_third[$this->index]) : $this->entry;
         }
     
         /**
@@ -204,7 +207,7 @@
         private function findNearestVerb()
         {
             $this->index = $this->locateIndex();
-            
+
             if ($this->index !== false) {
                 return $this->index;
             }

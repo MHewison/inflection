@@ -305,6 +305,7 @@ class Rules
     ];
     
     const SINGULAR_TO_PLURAL = [
+        "" => [""],
         "abacus" => ["abacuses"],
         "abyss" => ["abysses"],
         "addendum" => ["addenda"],
@@ -649,6 +650,7 @@ class Rules
     ];
     
     const PLURAL_TO_SINGULAR = [
+        "" => "",
         "abacuses" => "abacus",
         "abysses" => "abyss",
         "addenda" => "addendum",

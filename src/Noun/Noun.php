@@ -20,7 +20,7 @@
          */
         public static function isCountable(string $noun) : bool
         {
-            return !isset(Rules::UNCOUNTABLE[$noun]);
+            return array_search($noun, array_values(Rules::UNCOUNTABLE)) === false;
         }
     
         /**
@@ -80,7 +80,8 @@
          */
         private static function splitWords(string $noun) : string
         {
-            return trim(strtolower(preg_split("/\W/", $noun, 1, PREG_SPLIT_NO_EMPTY)[0]));
+            $noun_split = preg_split("/\W/", $noun, 1, PREG_SPLIT_NO_EMPTY);
+            return trim(strtolower(count($noun_split) ? $noun_split[0] : $noun));
         }
         
         public static function toPlural(string $noun) : string
