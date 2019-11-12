@@ -72,6 +72,10 @@ class Adjective
         if ($syllables > 2 && preg_match("/ed$/", $word)) {
             return ($type ? "most " : "more ") . $word;
         }
+        
+        if($syllables === 2) {
+            return ($type ? "most " : "more ") . $word;
+        }
 
         if (preg_match("/[^aeiouy][aeiouy][^rwaeiouy]$/", $word)) {
             return preg_replace("/([^aeiouy])$/", ($type ? "$1$1est" : "$1$1er"), $word);

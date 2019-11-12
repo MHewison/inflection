@@ -5,6 +5,8 @@ class Rules
     // Adjective => [comparative, superlative]
     const IRREGULAR = [
         "bad" => ["worse", "worst"],
+        "back" => ["more back", "most back"],
+        "bastard" => ["more bastard", "most bastard"],
         "boring" => ["more boring", "most boring"],
         "crowded" => ["more crowded", "most crowded"],
         "cunning" => ["more cunning", "most cunning"],
