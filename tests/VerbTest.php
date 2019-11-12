@@ -10,7 +10,6 @@ final class VerbTest extends TestCase
         $this->assertEquals([
             "entry" => "abhor",
             "tense" => "Present",
-            "nearest_verb" => "abhor",
             "past" => "abhorred",
             "past_participle" => "abhorred",
             "present" => "abhor",
@@ -42,38 +41,5 @@ final class VerbTest extends TestCase
     public function testCanBeConvertedToPresentThird()
     {
         $this->assertEquals("fakes", Verb::create("fake")->toPresentThird());
-    }
-
-    public function testCanFindNearestVerb()
-    {
-        $this->assertEquals("withforeseeing", Verb::create("withforeseen")->toGerund());
-    }
-
-    public function testWillFailGracefullyIfNoVerbExists()
-    {
-        $this->assertEquals([
-            "entry" => "thisisnotaverb",
-            "tense" => null,
-            "nearest_verb" => "",
-            "past" => "thisisnotaverb",
-            "past_participle" => "thisisnotaverb",
-            "present" => "thisisnotaverb",
-            "present_third" => "thisisnotaverb",
-            "gerund" => "thisisnotaverb",
-        ], Verb::create("thisisnotaverb")->conjugate());
-    }
-
-    public function testWillFailGracefullyIfVerbEmpty()
-    {
-        $this->assertEquals([
-            "entry" => "",
-            "tense" => null,
-            "nearest_verb" => "",
-            "past" => "",
-            "past_participle" => "",
-            "present" => "",
-            "present_third" => "",
-            "gerund" => "",
-        ], Verb::create("")->conjugate());
     }
 }

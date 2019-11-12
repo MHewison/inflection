@@ -17,7 +17,7 @@ $word->get();
 ```
 ### Output ###
 ```php
-    [adjectives] => Array
+    [adjective] => Array
         (
             [standard] => back
             [comparative] => more back
