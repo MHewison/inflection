@@ -75,11 +75,11 @@ class Verb
     
     /**
      * Conjugates a verb to all forms
-     * @return array
+     * @return array|bool
      */
-    public function conjugate() : array
+    public function conjugate()
     {
-        return [
+        return $this->index !== false ? [
             'entry' => $this->entry,
             'tense' => $this->tense,
             'past' => $this->toPast(),
@@ -87,7 +87,7 @@ class Verb
             'present' => $this->toPresent(),
             'present_third' => $this->toPresentThird(),
             'gerund' => $this->toGerund(),
-        ];
+        ] : false;
     }
     
     /**

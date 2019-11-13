@@ -38,6 +38,8 @@
          */
         public function __construct(string $word)
         {
+            $result = [];
+            
             $this->word = $word;
             $this->available_dictionaries = range('A', 'Z');
         
@@ -49,8 +51,8 @@
                 $result = $this->processWord();
             }
         
-            if (!isset($result['verb'])) {
-                $result['verb'] = Verb::create($this->word)->conjugate();
+            if (!isset($result['verb']) && $verb = Verb::create($this->word)->conjugate()) {
+                $result['verb'] = $verb;
             }
         
             // if none of the above are found, we can assume it is a noun.
